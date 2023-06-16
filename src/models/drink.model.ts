@@ -80,8 +80,6 @@ export function displayDrink(drink: Drink, withIngredients: boolean) {
   }
 }
 
-
-
 export function displayDrinks(drinks: Drink[], withingredients: boolean) {
   drinks.forEach((drink, index) => {
     console.log(`Drink ${index + 1}:`);
