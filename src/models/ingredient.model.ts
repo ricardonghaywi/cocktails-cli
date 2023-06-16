@@ -7,7 +7,6 @@ interface Ingredient {
   strABV: string | null;
 }
 
-
 export function displayIngredient(ingredient: Ingredient) {
   console.log("Ingredient ID:", ingredient.idIngredient);
   console.log("Ingredient Name:", ingredient.strIngredient);
@@ -19,11 +18,10 @@ export function displayIngredient(ingredient: Ingredient) {
   }
   console.log("Alcohol:", ingredient.strAlcohol);
   if (ingredient.strABV != null) {
-    console.log("ABV:", ingredient.strABV);
+    console.log("ABV :", ingredient.strABV);
   }
   console.log("-----------------------");
 }
-
 
 export function displayIngredients(ingredients: Ingredient[]) {
   ingredients.forEach((ingredient, index) => {
