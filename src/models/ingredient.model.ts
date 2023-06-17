@@ -24,10 +24,19 @@ export function displayIngredient(ingredient: Ingredient) {
 }
 
 export function displayIngredients(ingredients: Ingredient[]) {
-  ingredients.forEach((ingredient, index) => {
-    console.log(`Ingredient ${index + 1}:`);
+  //ingredients.forEach((ingredient, index) => {
+  //console.log(`Ingredient ${index + 1}:`);
+  //displayIngredient(ingredient);
+  //console.log("------------------");
+  //console.log("\n");
+  //});
+  let index: number = 1;
+
+  for (const ingredient of ingredients) {
+    console.log("Ingredient", index, ":");
     displayIngredient(ingredient);
     console.log("------------------");
     console.log("\n");
-  });
+    index++;
+  }
 }
