@@ -71,20 +71,29 @@ export function displayDrink(drink: Drink, withIngredients: boolean) {
   if (withIngredients) {
     console.log("Ingredients:");
     for (let i = 1; i <= 15; i++) {
-      const ingredient = drink["strIngredient" + i];
-      const measure = drink["strMeasure" + i];
-      if (ingredient && measure) {
-        console.log(`${measure} of ${ingredient}`);
+      let ingredient: string = "strIngredient" + i;
+      let measure: string = "strMeasure" + i;
+
+      if (drink[ingredient] != null && drink[measure] != null) {
+        console.log(drink[measure], "of", drink[ingredient]);
       }
     }
   }
 }
 
 export function displayDrinks(drinks: Drink[], withingredients: boolean) {
-  drinks.forEach((drink, index) => {
-    console.log(`Drink ${index + 1}:`);
+  //drinks.forEach((drink, index) => {
+  //console.log(`Drink ${index + 1}:`);
+  //displayDrink(drink, withingredients);
+  //console.log("------------------");
+  //console.log("\n");
+  //});
+  let index: number = 1;
+  for (const drink of drinks) {
+    console.log("Drink", index, ":");
     displayDrink(drink, withingredients);
     console.log("------------------");
     console.log("\n");
-  });
+    index++;
+  }
 }
