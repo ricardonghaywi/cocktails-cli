@@ -4,12 +4,16 @@ import {
   displayIngredient,
   displayIngredients,
 } from "./models/ingredient.model";
+require('dotenv').config();
+
+const API = process.env.API_KEY;
 
 export class search {
   async searchcocktailbyname(searchTerm: string) {
     try {
       const response = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`
+       // `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`
+       API+'search.php?s='+searchTerm
       );
       const drinks = response.data.drinks;
 
@@ -29,7 +33,8 @@ export class search {
   async searchingredientbyname(searchTerm: string) {
     try {
       const response = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${searchTerm}`
+        //`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${searchTerm}`
+        API+'search.php?i='+searchTerm
       );
       const ingredients = response.data.ingredients;
       if (ingredients && ingredients.length == 1) {
@@ -55,7 +60,8 @@ export class search {
 
     try {
       const response = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
+        //`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
+        API+'search.php?f='+letter
       );
       const drinks = response.data.drinks;
 
@@ -75,7 +81,8 @@ export class search {
   async getRandomCocktail() {
     try {
       const response = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/random.php`
+        //`https://www.thecocktaildb.com/api/json/v1/1/random.php`
+        API+'random.php'
       );
       const drinks = response.data.drinks;
       displayDrink(drinks[0], true);
@@ -87,7 +94,8 @@ export class search {
   async searchCocktailByIngredient(ingredient: string) {
     try {
       const response = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
+       // `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
+       API+'filter.php?i='+ingredient
       );
       const drinks = response.data.drinks;
       if (drinks && drinks.length == 1) {
@@ -102,4 +110,5 @@ export class search {
       console.error("Error making API call:", error.message);
     }
   }
+  
 }
