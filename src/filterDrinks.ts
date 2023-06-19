@@ -1,10 +1,16 @@
 import axios from "axios";
+require('dotenv').config();
+
+const API = process.env.API_KEY;
 
 export class filterDrinks {
+  
   async ByType(drinktype: string) {
+    
     try {
       const response = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${drinktype}`
+        //`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${drinktype}`
+        API+'filter.php?a='+drinktype
       );
       if (response.data.length == 0) {
         console.log(
@@ -33,9 +39,12 @@ export class filterDrinks {
   }
 
   async ByCategory(category: string) {
+
+    
     try {
       const response = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`
+        //`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`
+        API+'filter.php?c='+category
       );
       if (response.data.length == 0) {
         console.log(
@@ -66,7 +75,8 @@ export class filterDrinks {
   async ByGlass(glass: string) {
     try {
       const response = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glass}`
+        //`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glass}`
+        API+'filter.php?g='+glass
       );
       if (response.data.length == 0) {
         console.log(
@@ -92,4 +102,4 @@ export class filterDrinks {
       console.error("Error making API call", error.message);
     }
   }
-}
+} 
