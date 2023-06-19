@@ -1,12 +1,16 @@
 import axios from "axios";
 import { displayDrink } from "./models/drink.model";
 import { displayIngredient } from "./models/ingredient.model";
+require('dotenv').config();
+
+const API = process.env.API_KEY;
 
 export class ItemDetails {
   async GetCocktailById(id: string) {
     try {
       const response = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+        //`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+        API+'lookup.php?i='+id
       );
       const drink = response.data.drinks;
       if (drink == null) {
@@ -24,7 +28,8 @@ export class ItemDetails {
   async GetIngredientById(id: string) {
     try {
       const response = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${id}`
+       // `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${id}`
+       API+'lookup.php?iid='+id
       );
       const ingredient = response.data.ingredients;
       if (response.data.ingredients == null) {
@@ -39,3 +44,5 @@ export class ItemDetails {
     }
   }
 }
+
+
